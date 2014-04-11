@@ -22,11 +22,11 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				banner: '<%= meta.banner %>\n'
-			},
-			build: {
-				src: 'js/reveal.js',
-				dest: 'js/reveal.min.js'
-			}
+			}//,
+			//build: {
+			//	src: 'js/reveal.js',
+			//	dest: 'js/reveal.min.js'
+			//}
 		},
 
 		cssmin: {
@@ -40,15 +40,16 @@ module.exports = function(grunt) {
 		sass: {
 			main: {
 				files: {
-					'css/theme/default.css': 'css/theme/source/default.scss',
-					'css/theme/beige.css': 'css/theme/source/beige.scss',
-					'css/theme/night.css': 'css/theme/source/night.scss',
-					'css/theme/serif.css': 'css/theme/source/serif.scss',
-					'css/theme/simple.css': 'css/theme/source/simple.scss',
-					'css/theme/sky.css': 'css/theme/source/sky.scss',
-					'css/theme/moon.css': 'css/theme/source/moon.scss',
+					// 'css/theme/default.css': 'css/theme/source/default.scss',
+					// 'css/theme/beige.css': 'css/theme/source/beige.scss',
+					// 'css/theme/night.css': 'css/theme/source/night.scss',
+					// 'css/theme/serif.css': 'css/theme/source/serif.scss',
+					// 'css/theme/simple.css': 'css/theme/source/simple.scss',
+					// 'css/theme/sky.css': 'css/theme/source/sky.scss',
+					// 'css/theme/moon.css': 'css/theme/source/moon.scss',
 					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
-					'css/theme/blood.css': 'css/theme/source/blood.scss'
+					'css/theme/theme-system.css': 'css/theme/source/theme-system.scss',
+					// 'css/theme/blood.css': 'css/theme/source/blood.scss'
 				}
 			}
 		},

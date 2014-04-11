@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Drupal 8 Theme System - HOOK_theme() to Twig template</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+		<link rel="stylesheet" href="css/theme/theme-system.css" id="theme-system">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/ir_black.css">
@@ -42,6 +43,66 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
+				<section id="presenters" class="camp-slide" data-state="first-slide">
+					<section id="main-slide">
+						<div class="camp--branding">
+							<img src="images/logo.png" alt="NYC Camp 2014" class="image--plain" />
+							<h1 class="camp--title">Drupal 8 <br> Theme System</h1>
+						</div>
+						<div class="camp--presentation">
+							<h2 class="presentation--title">HOOK_theme() to Twig template</h2>
+							<h4 class="speaker--name">Scott Reeves &amp; Joël Pittet</h4>
+						</div>
+					</section>
+
+					<section>
+						<h1 class="slide--title">Scott Reeves</h1>
+						<div class="presenter l-fifty">
+							<div class="presenter--info">
+								<!-- <h3 class="presenter--info__name"></h3> -->
+								<figure>
+									<img src="images/presenters/Cottser.jpg" alt="Scott Reeves" />
+									<figcaption>Cottser</figcaption>
+								</figure>
+							</div>
+						</div>
+						<div class="l-fifty">
+							<ul class="presenter--info__facts">
+								<li class="fact fragment roll-in">Developer at Digital Echidna</li>
+								<li class="fact fragment roll-in">Drupal 8 theme system<br /> co-maintainer</li>
+								<li class="fact fragment roll-in">Drupal core mentor</li>
+								<li class="fact fragment roll-in">Likes beans</li>
+							</ul>
+							<img src="images/presenters/echidna.png" alt="Digital Echidna" class="image--plain echidna-logo" />
+						</div>
+					</section>
+
+					<section >
+						<div class="presenter l-fifty">
+							<div class="presenter--info">
+								<!-- <h3 class="presenter--info__name"></h3> -->
+								<figure>
+									<img src="images/presenters/joel.jpg" alt="Joël Pittet" />
+									<figcaption>joelpittet
+										<i class="pittet-logo"></i>
+									</figcaption>
+								</figure>
+							</div>
+						</div>
+						<div class="l-fifty">
+							<h1 class="slide--title">Joël Pittet</h1>
+							<ul class="presenter--info__facts">
+								<li class="fact fragment roll-in">Building Websites since 2001ish</li>
+								<li class="fact fragment roll-in">Front and Back End Developer</li>
+								<li class="fact fragment roll-in">Drupal 8 Core Theme System Maintainer</li>
+								<li class="fact fragment roll-in">And obviously love perogies</li>
+							</ul>
+						</div>
+					</section>
+
+				</section>
+
 				<section>
 					<h1>Reveal.js</h1>
 					<h3>HTML Presentations Made Easy</h3>
@@ -145,10 +206,10 @@
 
 						```
 						<section data-markdown>
-						  ## Markdown support
+							## Markdown support
 
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+							For those of you who like that sort of thing.
+							Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
 						</section>
 						```
 					</script>
@@ -260,18 +321,18 @@ Reveal.addEventListener( 'customevent', function() {
 					<h2>Pretty Code</h2>
 					<pre><code data-trim contenteditable>
 function linkify( selector ) {
-  if( supports3DTransforms ) {
+	if( supports3DTransforms ) {
 
-    var nodes = document.querySelectorAll( selector );
+		var nodes = document.querySelectorAll( selector );
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+		for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+			var node = nodes[i];
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
+			if( !node.className ) {
+				node.className += ' roll';
+			}
+		}
+	}
 }
 					</code></pre>
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
