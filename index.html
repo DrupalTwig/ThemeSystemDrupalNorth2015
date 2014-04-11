@@ -123,7 +123,7 @@
 						<aside class="notes">
 							<ul>
 								<li>The main reason for the process layer was to flatten strings into HTML.</li>
-								<li>In Drupal 8 we prefer "lazy" rendering things as late as possible, which usually gets called from a Twig template.</li>
+								<li>In Drupal 8 we prefer "lazy" rendering things as late as possible, which usually gets called from the template.</li>
 							</ul>
 						</aside>
 					</section>
@@ -135,6 +135,7 @@
 							<li>Markup belongs in templates, not in PHP strings. Your IDE/Text Editor will reward you by syntax highlighting markup and much less string concatenation and quote escaping is needed.</li>
 						</aside>
 					</section>
+
 					<section>
 						<h2 class="plus">Theme suggestion hooks</h2>
 						<p>Drupal 7:</p>
@@ -166,6 +167,27 @@ function MYTHEME_theme_suggestions_node_alter(array &$suggestions, array $variab
 							<li>You can see template suggestions in action when we talk about Twig debug in a few minutes.</li>
 						</aside>
 					</section>
+
+					<section>
+						<h2>Goodbye theme(), hello render arrays</h2>
+						<h4>Drupal 7:</h4>
+						<pre><code class="php">&lt;?php
+$variables['list'] = theme('item_list', array(
+  'items' => $items,
+));
+</code></pre>
+						<h4>Drupal 8:</h4>
+						<pre><code class="php">&lt;?php
+$variables['list'] = array(
+  '#theme' => 'item_list',
+  '#items' => $items,
+);
+</code></pre>
+						<aside class="notes">
+							<p>Instead of the <strong>list</strong> variable being a flat string of HTML, it's a render array that gets passed to the template and rendered from there.</p>
+						</aside>
+					</section>
+
 					<section>
 						<h2 class="plus">Oh yeah, and Twig!</h2>
 						<aside class="notes">
