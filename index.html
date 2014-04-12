@@ -273,6 +273,10 @@ function sandwich_theme() {
 							</li>
 							<li value="7"><code>#post_render</code></li>
 						</ol>
+						<aside class="notes">
+							<p><code>drupal_render()</code> is called on the render array. Any defined pre_render callbacks are called. drupal_render() calls the now internal _theme() function.</p>
+							<p>After _theme() does its thing, post_render callbacks can massage the resulting string.</p>
+						</aside>
 					</section>
 				</section>
 
