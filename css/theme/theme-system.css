@@ -6,7 +6,7 @@
  * Author: Joel Pittet & Scott Reeves
  *
  */
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,600);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
 @font-face {
   font-family: 'League Gothic';
   src: url("../../lib/font/league_gothic-webfont.eot");
@@ -204,6 +204,8 @@ section.twig {
   text-transform: inherit;
   text-shadow: none;
   font-weight: 400; }
+.reveal h1 {
+  font-weight: 700; }
 .reveal .invert h1, .reveal .invert h2, .reveal .invert h3, .reveal .invert h4, .reveal .invert h5, .reveal .invert h6, .reveal .invert p {
   color: #333;
   text-shadow: 6px white; }

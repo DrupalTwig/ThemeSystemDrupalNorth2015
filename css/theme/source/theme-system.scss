@@ -76,7 +76,7 @@ $selectionBackgroundColor: $magenta;
 	@include radial-gradient( rgba($base3,1), rgba(lighten($base3, 20%),1) );
 }
 
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,600);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
 
 $mainFont: 'Raleway', 'Verdana', 'Lucida Grande', 'Gill Sans', 'Arial', 'Helvetica', sans-serif;
 $headingFont: 'Raleway', 'Verdana', 'Lucida Grande', 'Gill Sans', 'Arial', 'Helvetica', sans-serif;
@@ -174,9 +174,9 @@ section.twig {
 		font-weight: 400;
   }
 
-  // h1 {
-  //   font-weight: 900;
-  // }
+  h1 {
+    font-weight: 700;
+  }
 
   // h2 {
   //   font-weight: 700;
