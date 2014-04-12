@@ -255,6 +255,78 @@ function sandwich_theme() {
 }
 						</code></pre>
 					</section>
+
+					<section>
+						<h2>Build your render array</h2>
+						<pre><code data-trim class="php">
+&lt;?php
+/**
+ * Builds a sandwich.
+ */
+public function build() {
+  return array(
+    '#theme' => 'sandwich',
+    '#name' => $this->t('Chickado'),
+    '#attributes' => array(
+      'id' => 'best-sandwich',
+      'style' => 'float: left;',
+      'class' => array('left', 'clearfix'),
+    ),
+    '#bread' => $this->t('Sourdough'),
+    '#cheese' => $this->t('Gruyère'),
+    '#veggies' => array($this->t('Avocado'), $this->t('Red onion'), $this->t('Romain')),
+    '#protein' => $this->t('Chicken'),
+    '#condiments' => array($this->t('Mayo'), $this->t('Dijon')),
+  );
+}
+						</code></pre>
+						<p>Pass in variables using #-prefixed keys.</p>
+					</section>
+
+					<section>
+						<h2>Markup your Twig template</h2>
+						<pre><code data-trim>
+&lt;section{{ attributes }}&gt;
+  &lt;h2&gt;{{ name }}&lt;/h2&gt;
+  {% if bread %}
+    &lt;p&gt;&lt;strong&gt;Bread:&lt;/strong&gt; {{ bread }}&lt;/p&gt;
+  {% endif %}
+
+  {% if protein %}
+    &lt;p&gt;&lt;strong&gt;Protein:&lt;/strong&gt; {{ protein }}&lt;/p&gt;
+  {% endif %}
+
+  {% if cheese %}
+    &lt;p&gt;&lt;strong&gt;Cheese:&lt;/strong&gt; {{ cheese }}&lt;/p&gt;
+  {% endif %}
+
+  {% if veggies %}
+    &lt;strong&gt;Vegetables:&lt;/strong&gt;
+    &lt;ul&gt;
+      {% for veg in veggies %}
+        &lt;li&gt;{{ veg }}&lt;/li&gt;
+      {% endfor %}
+    &lt;/ul&gt;
+  {% endif %}
+
+  {% if condiments %}
+    &lt;strong&gt;Condiments:&lt;/strong&gt;
+    &lt;ul&gt;
+      {% for condiment in condiments %}
+        &lt;li&gt;{{ condiment }}&lt;/li&gt;
+      {% endfor %}
+    &lt;/ul&gt;
+  {% endif %}
+&lt;/section&gt;
+						</code></pre>
+					</section>
+
+					<section>
+						<h1>The End<span class="fragment">?</span></h1>
+						<aside class="notes">
+							<p>That's the bare minimum for most practical use cases. But what if you need to do more, or if you're altering themeable output that someone else has defined? Let's dig a bit deeper.</p>
+						</aside>
+					</section>
 				</section>
 
 				<section id="more-sandwiches" class="title-slide">
