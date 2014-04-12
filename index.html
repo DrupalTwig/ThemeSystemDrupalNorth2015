@@ -280,6 +280,22 @@ function sandwich_theme() {
 					</section>
 				</section>
 
+				<section id="twig-magic" class="title-slide">
+					<section>
+						<h2>Twig magic</h2>
+						<p><code>{{ foo.bar }}</code></p>
+						<ul>
+							<li>checks if <code>foo</code> is an array and <code>bar</code> a valid element;</li>
+							<li>if not, and if <code>foo</code> is an object, checks that <code>bar</code> is a valid property;</li>
+							<li>if not, and if <code>foo</code> is an object, checks that <code>bar</code> is a valid method
+							(even if <code>bar</code> is the constructor - uses <code>__construct()</code> instead);</li>
+							<li>if not, and if <code>foo</code> is an object, checks that <code>getBar</code> is a valid method;</li>
+							<li>if not, and if <code>foo</code> is an object, checks that <code>isBar</code> is a valid method;</li>
+							<li>if not, returns a <code>null</code> value.</li>
+						</ul>
+					</section>
+				</section>
+
 			</div>
 
 		</div>
