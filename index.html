@@ -370,8 +370,8 @@ public function build() {
 						</ol>
 						<aside class="notes">
 							<p>28:00 - 33:00</p>
-							<p><code>drupal_render()</code> is called on the render array. Any defined pre_render callbacks are called. drupal_render() calls the now internal _theme() function.</p>
-							<p>After _theme() does its thing, post_render callbacks can massage the resulting string.</p>
+							<p><code>drupal_render()</code> is called on the render array. Any defined <code>#pre_render</code> callbacks are called. <code>drupal_render()</code> calls the now internal <code>_theme()</code> function.</p>
+							<p>After <code>_theme()</code> does its thing, <code>#post_render</code> callbacks can massage the resulting string.</p>
 						</aside>
 					</section>
 				</section>
