@@ -123,6 +123,7 @@
 						<h2 class="minus">Template process layer</h2>
 						<p class="fragment">…is gone!</p>
 						<aside class="notes">
+							<p>5:00 - 8:00</p>
 							<ul>
 								<li>The main reason for the process layer was to flatten strings into HTML.</li>
 								<li>In Drupal 8 we prefer "lazy" rendering things as late as possible, which usually gets called from the template.</li>
@@ -133,6 +134,7 @@
 						<h2 class="minus">Theme functions</h2>
 						<p class="fragment">…are being converted to Twig templates.</p>
 						<aside class="notes">
+							<p>8:00 - 11:00</p>
 							<li>Theme functions are so Drupal 7 (effectively deprecated, people will yell at you)</li>
 							<li>Markup belongs in templates, not in PHP strings. Your IDE/Text Editor will reward you by syntax highlighting markup and much less string concatenation and quote escaping is needed.</li>
 						</aside>
@@ -164,6 +166,7 @@ function MYTHEME_theme_suggestions_node_alter(array &$suggestions, array $variab
 }
 						</code></pre>
 						<aside class="notes">
+							<p>11:00 - 14:00</p>
 							<li>In Drupal 7 you could manipulate theme suggestions during preprocess, but by this point it might already be too late, or you've already done unnecessary preprocessing.</li>
 							<li>Drupal 8 splits out the manipulation of theme hook (template) suggestions into separate hooks.</li>
 							<li>You can see template suggestions in action when we talk about Twig debug in a few minutes.</li>
@@ -186,6 +189,7 @@ $variables['list'] = array(
 );
 </code></pre>
 						<aside class="notes">
+							<p>14:00 - 16:00</p>
 							<p>Instead of the <strong>list</strong> variable being a flat string of HTML, it's a render array that gets passed to the template and rendered from there.</p>
 						</aside>
 					</section>
@@ -193,6 +197,7 @@ $variables['list'] = array(
 					<section class="twig">
 						<h2 class="plus">Oh yeah, and Twig!</h2>
 						<aside class="notes">
+							<p>16:00 - 18:00</p>
 							<ul>
 								<li>Twig is a flexible, fast, and secure template engine for PHP.</li>
 								<li>The Twig engine and initial integration code was committed during BADCamp in November 2012.</li>
@@ -207,6 +212,7 @@ $variables['list'] = array(
 						<h1>Sandwiches.</h1>
 						<p class="fragment"><a href="https://github.com/DrupalTwig/sandwich">https://github.com/DrupalTwig/sandwich</a></p>
 						<aside class="notes">
+							<p>18:00 - 19:00</p>
 							<p>We were hungry when we came up with this example.</p>
 						</aside>
 					</section>
@@ -235,6 +241,9 @@ $variables['list'] = array(
 
 &lt;!-- END OUTPUT from 'core/modules/block/templates/block.html.twig' --&gt;
 						</code></pre>
+						<aside class="notes">
+							<p>19:00 - 21:00</p>
+						</aside>
 					</section>
 
 					<section>
@@ -334,6 +343,7 @@ public function build() {
 					<section>
 						<h1>The End<span class="fragment">?</span></h1>
 						<aside class="notes">
+							<p>- 28:00</p>
 							<p>That's the bare minimum for most practical use cases. But what if you need to do more, or if you're altering themeable output that someone else has defined? Let's dig a bit deeper.</p>
 						</aside>
 					</section>
@@ -356,6 +366,7 @@ public function build() {
 							<li value="7"><code>#post_render</code></li>
 						</ol>
 						<aside class="notes">
+							<p>28:00 - 33:00</p>
 							<p><code>drupal_render()</code> is called on the render array. Any defined pre_render callbacks are called. drupal_render() calls the now internal _theme() function.</p>
 							<p>After _theme() does its thing, post_render callbacks can massage the resulting string.</p>
 						</aside>
@@ -384,6 +395,7 @@ $sandwich->__get('cheese');
 
 
 						<aside class="notes">
+							<p>33:00 - 35:00</p>
 							<ul>
 								<li>checks if <code>foo</code> as an array and <code>bar</code> a valid element;</li>
 								<li>if not, and if <code>foo</code> is an object, checks that <code>bar</code> is a valid property;</li>
@@ -410,6 +422,9 @@ $sandwich->__get('cheese');
 						Class attributes split out and remainder attributes:
 						<pre><code>&lt;div class="{{ attributes.class }}"{{ attributes }}&gt;</code></pre>
 					</div>
+					<aside class="notes">
+						<p>35:00 - 38:00</p>
+					</aside>
 				</section>
 
 				<section id="thanks" class="title-slide">
