@@ -231,6 +231,25 @@ $variables['list'] = array(
 					</section>
 				</section>
 
+				<section id="more-sandwiches" class="title-slide">
+					<section>
+						<h2>Overview of rendering flow</h2>
+						<ol>
+							<li><code>drupal_render()</code></li>
+							<li><code>#pre_render</code></li>
+							<li>
+								<code>_theme()</code>
+								<ol start="4">
+									<li>Theme suggestion hooks</li>
+									<li>Preprocess functions</li>
+									<li>The template is rendered</li>
+								</ol>
+							</li>
+							<li value="7"><code>#post_render</code></li>
+						</ol>
+					</section>
+				</section>
+
 			</div>
 
 		</div>
