@@ -194,6 +194,10 @@ ul li {
   margin-right: 0;
   clear: none; }
 
+section.twig {
+  min-height: 400px;
+  background: url(../../images/twig.png) no-repeat bottom right; }
+
 .reveal .title-slide {
   text-align: center; }
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
