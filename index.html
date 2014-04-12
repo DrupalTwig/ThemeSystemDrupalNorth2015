@@ -229,6 +229,32 @@ $variables['list'] = array(
 &lt;!-- END OUTPUT from 'core/modules/block/templates/block.html.twig' --&gt;
 						</code></pre>
 					</section>
+
+					<section>
+						<h2>Define using <code>hook_theme()</code></h2>
+						<pre><code data-trim class="php">
+&lt;?php
+/**
+ * Implements hook_theme().
+ */
+function sandwich_theme() {
+  return array(
+    'sandwich' => array(
+      'variables' => array(
+        'attributes' => array(),
+        'name' => '',
+        'bread' => '',
+        'cheese' => '',
+        'veggies' => array(),
+        'protein' => '',
+        'condiments' => array(),
+      ),
+      'template' => 'sandwich',
+    ),
+  );
+}
+						</code></pre>
+					</section>
 				</section>
 
 				<section id="more-sandwiches" class="title-slide">
