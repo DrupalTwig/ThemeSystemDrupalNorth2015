@@ -430,8 +430,8 @@ $sandwich->__get('cheese');
 					</div>
 
 					<div class="fragment">
-						Class attributes split out and remainder attributes:
-						<pre><code>&lt;div class="{{ attributes.class }}"{{ attributes }}&gt;</code></pre>
+						Splitting out the class attribute:
+						<pre><code>&lt;div class="myclass {{ attributes.class }}"{{ attributes|without('class') }}&gt;</code></pre>
 					</div>
 					<aside class="notes">
 						<p>35:00 - 38:00</p>
