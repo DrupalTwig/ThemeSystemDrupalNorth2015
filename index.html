@@ -361,17 +361,20 @@ public function build() {
 					<section>
 						<h2>Overview of rendering flow</h2>
 						<ol>
-							<li><code>drupal_render()</code></li>
-							<li><code>#pre_render</code></li>
-							<li>
-								<code>_theme()</code>
-								<ol start="4">
-									<li>Theme suggestion hooks</li>
-									<li>Preprocess functions</li>
-									<li>The template is rendered</li>
+							<li><code>drupal_render()</code>
+								<ol start="2">
+									<li><code>#pre_render</code></li>
+									<li>
+										<code>_theme()</code>
+										<ol start="4">
+											<li>Theme suggestion hooks</li>
+											<li>Preprocess functions</li>
+											<li>Template is rendered</li>
+										</ol>
+									</li>
+									<li value="7"><code>#post_render</code></li>
 								</ol>
 							</li>
-							<li value="7"><code>#post_render</code></li>
 						</ol>
 						<aside class="notes">
 							<p>28:00 - 33:00</p>
