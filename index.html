@@ -210,10 +210,28 @@ $variables['list'] = array(
 						</aside>
 					</section>
 
+					<section>
+						<h2>Print what you want,<br> when you want</h2>
+						<h4>Drupal 7:</h4>
+						<pre><code class="php">&lt;?php
+// We hide the comments and links now so that we can render them later.
+hide($content['comments']);
+hide($content['links']);
+print render($content);
+?&gt;</code></pre>
+
+						<h4>Drupal 8:</h4>
+							<pre><code>{# We give you what you ask for. #}
+{{ content|without('comments', 'links') }}</code></pre>
+						<aside class="notes">
+							<p>19:00 - 21:00</p>
+						</aside>
+					</section>
+
 					<section class="twig">
 						<h2 class="plus">Oh yeah, and Twig!</h2>
 						<aside class="notes">
-							<p>19:00 - 21:00</p>
+							<p>21:00 - 23:00</p>
 							<ul>
 								<li>Twig is a flexible, fast, and secure template engine for PHP.</li>
 								<li>The Twig engine and initial integration code was committed during BADCamp in November 2012.</li>
@@ -249,7 +267,7 @@ $variables['list'] = array(
 &lt;!-- END OUTPUT from 'core/modules/block/templates/block.html.twig' --&gt;
 					</code></pre>
 					<aside class="notes">
-						<p>21:00 - 23:00</p>
+						<p>23:00 - 25:00</p>
 					</aside>
 				</section>
 
@@ -258,7 +276,7 @@ $variables['list'] = array(
 						<h1>Sandwiches.</h1>
 						<p class="fragment"><a href="https://github.com/DrupalTwig/sandwich">https://github.com/DrupalTwig/sandwich</a></p>
 						<aside class="notes">
-							<p>23:00 - 25:00</p>
+							<p>25:00 - 26:00</p>
 							<p>We were hungry when we came up with this example.</p>
 						</aside>
 					</section>
@@ -315,7 +333,7 @@ public function build() {
 						</code></pre>
 						<p>Pass in variables using #-prefixed keys.</p>
 						<aside class="notes">
-							<p>- 28:00</p>
+							<p>- 29:00</p>
 						</aside>
 					</section>
 
@@ -387,7 +405,7 @@ public function build() {
 							</li>
 						</ol>
 						<aside class="notes">
-							<p>32:00 - 37:00</p>
+							<p>33:00 - 38:00</p>
 							<p><code>drupal_render()</code> is called on the render array. Any defined <code>#pre_render</code> callbacks are called. <code>drupal_render()</code> calls the now internal <code>_theme()</code> function.</p>
 							<p>After <code>_theme()</code> does its thing, <code>#post_render</code> callbacks can massage the resulting string.</p>
 						</aside>
@@ -416,7 +434,7 @@ $sandwich->__get('cheese');
 
 
 						<aside class="notes">
-							<p>37:00 - 39:00</p>
+							<p>38:00 - 40:00</p>
 							<ul>
 								<li>checks if <code>foo</code> as an array and <code>bar</code> a valid element;</li>
 								<li>if not, and if <code>foo</code> is an object, checks that <code>bar</code> is a valid property;</li>
