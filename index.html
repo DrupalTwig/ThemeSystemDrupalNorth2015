@@ -204,11 +204,18 @@ $variables['list'] = array(
 						</div>
 
 						<div class="fragment">
+							Please don't do this, you will end up with yucky whitespace:
+							<pre class="fragment current-show"><code>&lt;div {{ attributes }}&gt;</code></pre>
+							<pre class="fragment"><code>&lt;div✖{{ attributes }}&gt;</code></pre>
+						</div>
+
+						<div class="fragment">
 							Splitting out the class attribute:
 							<pre><code>&lt;div class="myclass {{ attributes.class }}"{{ attributes|without('class') }}&gt;</code></pre>
 						</div>
 						<aside class="notes">
 							<p>16:00 - 19:00</p>
+							<p>Attributes contain the attributes and also know how to print them properly. If you are printing the entire set of attributes, don't prepend a space.
 						</aside>
 					</section>
 
