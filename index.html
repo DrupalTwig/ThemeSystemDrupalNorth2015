@@ -366,19 +366,19 @@ function sandwich_theme() {
  * Implements hook_theme().
  */
 function sandwich_theme() {
-  return array(
-    'sandwich' => array(
-      'variables' => array(
-        'attributes' => array(),
+  return [
+    'sandwich' => [
+      'variables' => [
+        'attributes' => [],
         'name' => '',
         'bread' => '',
         'cheese' => '',
-        'veggies' => array(),
+        'veggies' => [],
         'protein' => '',
-        'condiments' => array(),
-      ),
-    ),
-  );
+        'condiments' => [],
+      ],
+    ],
+  ];
 }
 						</code></pre>
 					</section>
@@ -397,11 +397,11 @@ public function build() {
     '#attributes' => array(
       'id' => 'best-sandwich',
       'style' => 'float: left;',
-      'class' => array('left', 'clearfix'),
+      'class' => ['left', 'clearfix'],
     ),
     '#bread' => $this->t('Sourdough'),
     '#cheese' => $this->t('Gruyère'),
-    '#veggies' => array($this->t('Avocado'), $this->t('Red onion'), $this->t('Romaine')),
+    '#veggies' => [$this->t('Avocado'), $this->t('Red onion'), $this->t('Romaine')],
     '#protein' => $this->t('Chicken'),
     '#condiments' => array($this->t('Mayo'), $this->t('Dijon')),
   );
