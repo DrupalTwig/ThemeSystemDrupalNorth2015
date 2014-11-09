@@ -263,10 +263,13 @@ print render($content);
 				</section>
 
 				<section>
-					<p>settings.php:</p>
-					<pre><code>$settings['twig_debug'] = TRUE;</code></pre>
-					<p>Example output:</p>
-					<pre><code data-trim class="html">
+					<section>
+						<p>services.yml:</p>
+						<pre><code>parameters:
+  twig.config:
+    debug: true</code></pre>
+						<p>Example output:</p>
+						<pre><code data-trim class="html">
 &lt;!-- THEME DEBUG --&gt;
 &lt;!-- CALL: _theme('block') --&gt;
 &lt;!-- FILE NAME SUGGESTIONS:
@@ -286,10 +289,40 @@ print render($content);
 &lt;/div&gt;
 
 &lt;!-- END OUTPUT from 'core/modules/block/templates/block.html.twig' --&gt;
-					</code></pre>
-					<aside class="notes">
-						<p>23:00 - 25:00</p>
-					</aside>
+						</code></pre>
+						<aside class="notes">
+							<p>25:00 - 27:00</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Drupal 7.33!</h2>
+						<p>settings.php:</p>
+						<pre><code>$conf['theme_debug'] = TRUE;</code></pre>
+						<p>Example output:</p>
+						<pre><code data-trim class="html">
+&lt;!-- THEME DEBUG --&gt;
+&lt;!-- CALL: theme('block') --&gt;
+&lt;!-- FILE NAME SUGGESTIONS:
+   * block--system--powered-by.tpl.php
+   * block--system.tpl.php
+   * block--footer.tpl.php
+   x block.tpl.php
+--&gt;
+&lt;!-- BEGIN OUTPUT from 'modules/block/block.tpl.php' --&gt;
+&lt;div id=&quot;block-system-powered-by&quot; class=&quot;block block-system&quot;&gt;
+
+
+  &lt;div class=&quot;content&quot;&gt;
+    &lt;span&gt;Powered by &lt;a href=&quot;https://www.drupal.org&quot;&gt;Drupal&lt;/a&gt;&lt;/span&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- END OUTPUT from 'modules/block/block.tpl.php' --&gt;
+						</code></pre>
+						<aside class="notes">
+							<p>27:00 - 28:00</p>
+						</aside>
+					</section>
 				</section>
 
 				<section id="sandwich" class="title-slide">
