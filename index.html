@@ -213,6 +213,25 @@ $variables['list'] = array(
 					</section>
 
 					<section>
+						<h2>Attributes cont'd</h2>
+
+						<div>
+							Class manipulation:
+							<pre><code>&lt;div{{ attributes.addClass('hello').removeClass('goodbye') }}&gt;</code></pre>
+						</div>
+
+						<div class="fragment">
+							Testing:
+							<pre><code>{% if attributes.hasClass('field-label-inline') %}
+  {# Do something special here. #}
+{% endif %}</code></pre>
+						</div>
+						<aside class="notes">
+							<p>19:00 - 21:00</p>
+						</aside>
+					</section>
+
+					<section>
 						<h2>Print what you want,<br> when you want</h2>
 						<h4>Drupal 7:</h4>
 						<pre><code class="php">&lt;?php
