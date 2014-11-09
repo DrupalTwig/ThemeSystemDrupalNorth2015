@@ -391,20 +391,20 @@ function sandwich_theme() {
  * Builds a sandwich.
  */
 public function build() {
-  return array(
+  return [
     '#theme' => 'sandwich',
     '#name' => $this->t('Chickado'),
-    '#attributes' => array(
+    '#attributes' => [
       'id' => 'best-sandwich',
       'style' => 'float: left;',
       'class' => ['left', 'clearfix'],
-    ),
+    ],
     '#bread' => $this->t('Sourdough'),
     '#cheese' => $this->t('Gruyère'),
     '#veggies' => [$this->t('Avocado'), $this->t('Red onion'), $this->t('Romaine')],
     '#protein' => $this->t('Chicken'),
-    '#condiments' => array($this->t('Mayo'), $this->t('Dijon')),
-  );
+    '#condiments' => [$this->t('Mayo'), $this->t('Dijon')],
+  ];
 }
 						</code></pre>
 						<p>Pass in variables using #-prefixed keys.</p>
@@ -538,7 +538,8 @@ $sandwich->__call('cheese');
 					</div>
 				</section>
 
-				<section id="others" class="title-slide">
+				<!--
+        <section id="others" class="title-slide">
 					<h1>Related</h1>
 					<p>
 						<a href="https://austin2014.drupal.org/session/twig-friendly-curl-braces-invade-your-templates" title="Twig: Friendly Curl Braces invade your Templates! | DrupalCon Austin 2014">Twig: Friendly Curl Braces invade your Templates!</a>
@@ -550,22 +551,18 @@ $sandwich->__call('cheese');
 						<br/>
 						Wednesday &middot; 1pm&ndash;2pm
 					</p><br />
-
 					<p>
 						<a href="https://austin2014.drupal.org/session/twig-playground" title="Twig Playground | DrupalCon Austin 2014">Twig Playground</a><br/>
 						Wednesday &middot; 3:45pm&ndash;4:45pm
 					</p>
-
-
 				</section>
-
-
 
 				<section id="eval" class="title-slide">
 					<h1>What did you think?</h1>
 					<p>Evaluate our session:</p>
 					<p><a href="http://austin2014.drupal.org/schedule" target="_blank">austin2014.drupal.org/schedule</a></p>
 				</section>
+        -->
 
 			</div>
 
