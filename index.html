@@ -330,14 +330,14 @@ print render($content);
 						<h1>Sandwiches.</h1>
 						<p class="fragment"><a href="https://github.com/DrupalTwig/sandwich">https://github.com/DrupalTwig/sandwich</a></p>
 						<aside class="notes">
-							<p>25:00 - 26:00</p>
+							<p>28:00 - 29:00</p>
 							<p>We were hungry when we came up with this example.</p>
 						</aside>
 					</section>
 
-					<section>
+					<section class="hook-theme">
 						<h2>Define using <code>hook_theme()</code></h2>
-						<pre><code data-trim class="php">
+						<pre class="fragment current-show"><code data-trim class="php">
 &lt;?php
 /**
  * Implements hook_theme().
@@ -354,7 +354,29 @@ function sandwich_theme() {
         'protein' => '',
         'condiments' => array(),
       ),
+      // 'template' is the default in Drupal 8!
       'template' => 'sandwich',
+    ),
+  );
+}
+						</code></pre>
+						<pre class="fragment current-show"><code data-trim class="php">
+&lt;?php
+/**
+ * Implements hook_theme().
+ */
+function sandwich_theme() {
+  return array(
+    'sandwich' => array(
+      'variables' => array(
+        'attributes' => array(),
+        'name' => '',
+        'bread' => '',
+        'cheese' => '',
+        'veggies' => array(),
+        'protein' => '',
+        'condiments' => array(),
+      ),
     ),
   );
 }

@@ -200,6 +200,15 @@ section.twig {
   min-height: 400px;
   background: url(../../images/twig.png) no-repeat bottom right; }
 
+section.hook-theme {
+  min-height: 500px; }
+
+.reveal .slides section .fragment.current-show {
+  display: none;
+  visibility: hidden; }
+.reveal .slides section .fragment.current-show.current-fragment {
+  display: block;
+  visibility: visible; }
 .reveal .title-slide {
   text-align: center; }
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {

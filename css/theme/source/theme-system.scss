@@ -158,10 +158,22 @@ section.twig {
   background: url(../../images/twig.png) no-repeat bottom right;
 }
 
-
+section.hook-theme {
+  min-height: 500px;
+}
 
 // Reveal Overrides ----------------------------
 .reveal {
+
+  .slides section .fragment.current-show {
+    display: none;
+    visibility: hidden;
+  }
+
+  .slides section .fragment.current-show.current-fragment {
+    display: block;
+    visibility: visible;
+  }
 
   // .slides {
   //   text-align: left;
