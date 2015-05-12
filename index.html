@@ -222,12 +222,13 @@ $variables['list'] = [
               <pre><code class="language-twig">&lt;div{{ attributes }}&gt;</code></pre>
             </div>
 
+            <div class="fragment current-show">
+              Please don't do this, you will end up with yucky whitespace:
+              <pre><code class="language-twig">&lt;div {{ attributes }}&gt;</code></pre>
+            </div>
             <div class="fragment">
-              <div class="fragment current-show">
-                Please don't do this, you will end up with yucky whitespace:
-                <pre><code class="language-twig">&lt;div {{ attributes }}&gt;</code></pre>
-              </div>
-              <pre class="fragment" class="language-twig"><code class="language-twig">&lt;div✖{{ attributes }}&gt;</code></pre>
+              Please don't do this, you will end up with yucky whitespace:
+              <pre class="language-twig"><code class="language-twig">&lt;div✖{{ attributes }}&gt;</code></pre>
             </div>
 
             <div class="fragment">
