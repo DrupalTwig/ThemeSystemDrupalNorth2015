@@ -81,10 +81,10 @@
             <h1 class="slide--title">Joël Pittet</h1>
             <div class="l-fifty">
               <ul class="presenter--info__facts">
-                <li class="fact fragment roll-in">Building Websites since 2001ish</li>
-                <li class="fact fragment roll-in">Front and Back End Developer</li>
+                <li class="fact fragment roll-in">Making Websites since 2001ish</li>
+                <li class="fact fragment roll-in">Full stack developer</li>
                 <li class="fact fragment roll-in">Drupal 8 Core Theme System Maintainer</li>
-                <li class="fact fragment roll-in">And obviously love perogies</li>
+                <li class="fact fragment roll-in">And &lt;3 perogies this much!</li>
               </ul>
 
               <i class="pittet-logo"></i>
@@ -361,12 +361,10 @@ print render($content);
 --&gt;
 &lt;!-- BEGIN OUTPUT from 'modules/block/block.tpl.php' --&gt;
 &lt;div id=&quot;block-system-powered-by&quot; class=&quot;block block-system&quot;&gt;
-
-
   &lt;div class=&quot;content&quot;&gt;
-    &lt;span&gt;Powered by &lt;a href=&quot;https://www.drupal.org&quot;&gt;Drupal&lt;/a&gt;&lt;/span&gt;  &lt;/div&gt;
+    &lt;span&gt;Powered by &lt;a href=&quot;https://www.drupal.org&quot;&gt;Drupal&lt;/a&gt;&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;!-- END OUTPUT from 'modules/block/block.tpl.php' --&gt;
             </code></pre>
             <aside class="notes">
@@ -582,7 +580,6 @@ $sandwich->isCheese();
 $sandwich->__call('cheese');
 </code></pre>
 
-
             <aside class="notes">
               <p>38:00 - 40:00</p>
               <p>Show Kint demo.</p>
@@ -595,8 +592,38 @@ $sandwich->__call('cheese');
                 <li>if not, returns a <code>null</code> value.</li>
               </ul>
             </aside>
-
           </section>
+        </section>
+
+        <section id="autoescape" class="title-slide">
+          <h2>Autoescape</h2>
+          <div class="fragment">
+            <pre><code data-trim class="php">
+              &lt;?php $user->field_first_name = "&lt;script&gt;alert('XSS')&lt;/script&gt;";
+            </code></pre>
+          </div>
+
+          <div>
+            <div class="fragment highlight-red">
+              <h4>Drupal 7:</h4>
+              <pre><code data-trim class="php">
+                <span>BAD &lt;?php print $user->field_first_name; ?&gt;!</span>
+              </code></pre>
+              <pre><code data-trim class="twig">
+                <span>GOOD &lt;?php print check_plain($user->field_first_name); ?&gt;!</span>
+              </code></pre>
+            </div>
+            <div class="fragment highlight-green">
+              <h4>Drupal 8:</h4>
+              <pre><code data-trim class="html">
+                <span>GOOD {{ user.field_first_name }}!</span>
+              </code></pre>
+              <pre><code data-trim class="html">
+                <span>BAD {{ user.field_first_name|raw }}!</span>
+              </code></pre>
+            </div>
+          </div>
+
         </section>
 
         <section id="evaluation" class="title-slide">
