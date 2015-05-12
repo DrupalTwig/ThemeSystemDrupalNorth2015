@@ -187,10 +187,10 @@ $variables['list'] = theme('item_list', array(
 </code></pre>
             <h4>Drupal 8:</h4>
             <pre><code class="php">&lt;?php
-$variables['list'] = array(
+$variables['list'] = [
   '#theme' => 'item_list',
   '#items' => $items,
-);
+];
 </code></pre>
             <aside class="notes">
               <p>14:00 - 16:00</p>
@@ -260,17 +260,38 @@ $variables['list'] = array(
 
           <section>
             <h2>Print what you want,<br> when you want</h2>
-            <h4>Drupal 7:</h4>
-            <pre><code class="php">&lt;?php
-// We hide the comments and links now so that we can render them later.
+
+            <div>
+              <div class="fragment l-fifty">
+                <h4>Drupal 7:</h4>
+                <pre><code class="php">&lt;?php
+// We hide the comments and links
+// to print them later.
 hide($content['comments']);
 hide($content['links']);
 print render($content);
+// Render calls show() on the element.
+print render($content['links']);
+// Nothing printed WTF? All children are
+// #printed = TRUE.
+print render($content);
 ?&gt;</code></pre>
+              </div>
 
-            <h4>Drupal 8:</h4>
-              <pre><code>{# We give you what you ask for. #}
-{{ content|without('comments', 'links') }}</code></pre>
+              <div class="fragment l-fifty">
+                <h4>Drupal 8:</h4>
+                <pre><code>{# Print without comments and links #}
+{{ content|without('comments', 'links') }}
+{# Print only links #}
+{{ content.links }}
+{# Print everything #}
+{{ content }}
+{# Print everything again YAY :) #}
+{{ content }}
+</code></pre>
+              </div>
+
+            </div>
             <aside class="notes">
               <p>21:30 - 23:00</p>
             </aside>
