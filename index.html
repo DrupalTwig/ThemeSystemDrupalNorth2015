@@ -490,13 +490,37 @@ public function build() {
 
         <section id="more-sandwiches" class="title-slide">
           <section>
-            <h2>Overview of rendering flow</h2>
+            <h2>Overview of Drupal 7 rendering flow</h2>
             <ol>
               <li><code>drupal_render()</code>
                 <ol start="2">
                   <li><code>#pre_render</code></li>
                   <li>
-                    <code>_theme()</code>
+                    <code>theme()</code>
+                    <ol start="4">
+                      <li>Preprocess functions (and suggestions)</li>
+                      <li>Template/theme function is rendered</li>
+                    </ol>
+                  </li>
+                  <li value="7"><code>#post_render</code></li>
+                </ol>
+              </li>
+            </ol>
+            <aside class="notes">
+              <p>33:00 - 37:00</p>
+              <p><code>drupal_render()</code> is called on the render array. Any defined <code>#pre_render</code> callbacks are called. <code>drupal_render()</code> calls the now internal <code>_theme()</code> function.</p>
+              <p>After <code>_theme()</code> does its thing, <code>#post_render</code> callbacks can massage the resulting string.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Overview of Drupal 8 rendering flow</h2>
+            <ol>
+              <li><code>\Drupal::service('renderer')->render()</code>
+                <ol start="2">
+                  <li><code>#pre_render</code></li>
+                  <li>
+                    <code>\Drupal::theme()->render()</code>
                     <ol start="4">
                       <li>Theme suggestion hooks</li>
                       <li>Preprocess functions</li>
@@ -508,9 +532,8 @@ public function build() {
               </li>
             </ol>
             <aside class="notes">
-              <p>33:00 - 38:00</p>
-              <p><code>drupal_render()</code> is called on the render array. Any defined <code>#pre_render</code> callbacks are called. <code>drupal_render()</code> calls the now internal <code>_theme()</code> function.</p>
-              <p>After <code>_theme()</code> does its thing, <code>#post_render</code> callbacks can massage the resulting string.</p>
+              <p>37:00 - 38:00</p>
+              <p>Overall pretty much the same thing, just drupal_render() and theme() got moved to service classes.</p>
             </aside>
           </section>
         </section>
