@@ -142,7 +142,6 @@ ul {
   }
 }
 
-
 // Layout Styles
 .l-fifty {
   &:nth-child(odd) {
@@ -164,6 +163,9 @@ section.hook-theme {
 
 // Reveal Overrides ----------------------------
 .reveal {
+  pre code {
+    padding: 0;
+  }
 
   .slides section .fragment.current-show {
     display: none;

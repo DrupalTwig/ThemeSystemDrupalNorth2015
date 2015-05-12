@@ -202,6 +202,8 @@ section.twig {
 
 section.hook-theme {
   min-height: 500px; }
+.reveal pre code {
+  padding: 0; }
 
 .reveal .slides section .fragment.current-show {
   display: none;
