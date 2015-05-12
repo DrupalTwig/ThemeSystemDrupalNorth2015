@@ -272,8 +272,10 @@ hide($content['links']);
 print render($content);
 // Render calls show() on the element.
 print render($content['links']);
-// Nothing printed WTF? All children are
-// #printed = TRUE.
+// To get back links with the content.
+show($content['links']);
+// Prints content with links yet
+// without comments :(
 print render($content);
 ?&gt;</code></pre>
               </div>
@@ -282,11 +284,14 @@ print render($content);
                 <h4>Drupal 8:</h4>
                 <pre><code>{# Print without comments and links #}
 {{ content|without('comments', 'links') }}
+
 {# Print only links #}
 {{ content.links }}
-{# Print everything #}
-{{ content }}
-{# Print everything again YAY :) #}
+
+{# Print everything without comment! #}
+{{ content|without('comments') }}
+
+{# Print everything YAY :) #}
 {{ content }}
 </code></pre>
               </div>
@@ -328,14 +333,11 @@ print render($content);
 --&gt;
 &lt;!-- BEGIN OUTPUT from 'core/modules/block/templates/block.html.twig' --&gt;
 &lt;div class=&quot;block block-system contextual-region&quot; id=&quot;block-bartik-powered&quot; role=&quot;complementary&quot;&gt;
-
-    &lt;div data-contextual-id=&quot;block:block=bartik_powered:&quot;&gt;&lt;/div&gt;
-
+  &lt;div data-contextual-id=&quot;block:block=bartik_powered:&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;content&quot;&gt;
-          &lt;span&gt;Powered by &lt;a href=&quot;http://drupal.org&quot;&gt;Drupal&lt;/a&gt;&lt;/span&gt;
-      &lt;/div&gt;
+    &lt;span&gt;Powered by &lt;a href=&quot;http://drupal.org&quot;&gt;Drupal&lt;/a&gt;&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;!-- END OUTPUT from 'core/modules/block/templates/block.html.twig' --&gt;
             </code></pre>
             <aside class="notes">
