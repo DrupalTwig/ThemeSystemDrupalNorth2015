@@ -197,7 +197,7 @@ ul li {
   clear: none; }
 
 section.twig {
-  min-height: 400px;
+  height: 400px;
   background: url(../../images/twig.png) no-repeat bottom right; }
 
 section.hook-theme {
