@@ -15,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/theme-system.css" id="theme">
 
     <!-- For syntax highlighting -->
     <!-- <link rel="stylesheet" href="lib/css/ir_black.css"> -->
@@ -30,6 +29,8 @@
     <!-- <link rel="stylesheet" href="lib/css/sunburst.css" id="highlight-theme"> -->
     <!-- <link rel="stylesheet" href="lib/css/tomorrow-night.css" id="highlight-theme"> -->
     <link rel="stylesheet" href="lib/css/prism.css">
+
+    <link rel="stylesheet" href="css/theme/theme-system.css" id="theme">
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
@@ -523,7 +524,7 @@ public function build() {
           <section>
             <h2>Overview of Drupal 8<br> rendering flow</h2>
             <ol>
-              <li><code>\Drupal::service('renderer')->render()</code>
+              <li><code class="language-php">\Drupal::service('renderer')->render()</code>
                 <ol start="2">
                   <li><code class="language-markup">#pre_render</code></li>
                   <li>
@@ -550,26 +551,6 @@ public function build() {
           <section>
             <h2><code>#type</code> “Coles Notes”</h2>
             <p class="fragment">Yes, that's Canadian eh!</p>
-          </section>
-
-          <section>
-            <h2>Defaults and callbacks on a common type of render array</h2>
-            <p>Example output:</p>
-            <pre><code data-trim class="language-php">
-$variables['link'] = [
-  '#type' => 'link',
-  '#title' => t('Example'),
-  '#url' => 'http://example.com',
-];
-</code></pre>
-<div class="fragment">
-<p>Calls <code>#pre_render </code>to build up it's <code>#markup</code> from a <strong>link generator</strong>.</p>
-<pre><code data-trim class="language-php">
-\Drupal::service('link_generator');
-$generated_link = $link_generator->generate($element['#title'], $element['#url']->setOptions($options), TRUE);
-$element['#markup'] = $generated_link->getGeneratedLink();
-</code></pre>
-</div>
           </section>
 
           <section>
@@ -618,9 +599,27 @@ class HtmlTag extends RenderElement {
 }
 </code></pre>
              </div>
-
             </div>
+          </section>
 
+          <section>
+            <h2>Defaults and callbacks on a common type of render array</h2>
+            <p>Example <code>#type</code> render array:</p>
+            <pre><code data-trim class="language-php">
+$variables['link'] = [
+  '#type' => 'link',
+  '#title' => t('Example'),
+  '#url' => 'http://example.com',
+];
+</code></pre>
+<div class="fragment">
+<p>Calls <code>#pre_render </code>to build up it's <code>#markup</code> from a <strong>link generator</strong>.</p>
+<pre><code data-trim class="language-php">
+\Drupal::service('link_generator');
+$generated_link = $link_generator->generate($element['#title'], $element['#url']->setOptions($options), TRUE);
+$element['#markup'] = $generated_link->getGeneratedLink();
+</code></pre>
+</div>
           </section>
 
 

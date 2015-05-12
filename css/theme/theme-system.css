@@ -234,3 +234,8 @@ i.pittet-logo {
   i.pittet-logo:before {
     content: "J";
     font-size: 80px; }
+
+/* Prism Override */
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  color: #ccc;
+}
