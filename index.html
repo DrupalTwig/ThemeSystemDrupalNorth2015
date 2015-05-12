@@ -127,9 +127,11 @@
         </section>
 
         <section id="theme-layer-changes" class="title-slide">
+
           <section>
             <h1>Drupal 8 <br />theme layer changes</h1>
           </section>
+
           <section>
             <h2 class="minus">Template process layer</h2>
             <p class="fragment">…is gone!</p>
@@ -143,7 +145,7 @@
           </section>
           <section>
             <h2 class="minus">Theme functions</h2>
-            <p class="fragment">…are being converted to Twig templates…<br>
+            <p class="fragment">…are being converted to templates…<br>
             <span class="fragment">12 remaining!</span><br>
             <span class="fragment">(and other formats).</span>
             </p>
@@ -207,17 +209,23 @@ $variables['list'] = [
             </aside>
           </section>
 
+        </section>
+
+        <section>
+
           <section>
             <h2>Attributes</h2>
 
             <div>
-              All the attributes:
+              All the HTML attributes:
               <pre><code class="language-twig">&lt;div{{ attributes }}&gt;</code></pre>
             </div>
 
             <div class="fragment">
-              Please don't do this, you will end up with yucky whitespace:
-              <pre class="fragment current-show"><code class="language-twig">&lt;div {{ attributes }}&gt;</code></pre>
+              <div class="fragment current-show">
+                Please don't do this, you will end up with yucky whitespace:
+                <pre><code class="language-twig">&lt;div {{ attributes }}&gt;</code></pre>
+              </div>
               <pre class="fragment" class="language-twig"><code class="language-twig">&lt;div✖{{ attributes }}&gt;</code></pre>
             </div>
 
@@ -311,8 +319,14 @@ print render($content);
             </aside>
           </section>
 
+
+        </section>
+
+        <section>
+
           <section class="language-twig">
             <h2 class="plus">Oh yeah, and Twig!</h2>
+            <p class="fragment">Did you notice we snuck that in? :P</p>
             <aside class="notes">
               <p>23:00 - 25:00</p>
               <ul>
@@ -322,9 +336,6 @@ print render($content);
               </ul>
             </aside>
           </section>
-        </section>
-
-        <section>
           <section>
             <p>services.yml:</p>
             <pre><code class="language-yaml">parameters:
@@ -333,7 +344,7 @@ print render($content);
             <p>Example output:</p>
             <pre><code data-trim class="language-markup">
 &lt;!-- THEME DEBUG --&gt;
-&lt;!-- CALL: _theme('block') --&gt;
+&lt;!-- THEME HOOK: 'block' --&gt;
 &lt;!-- FILE NAME SUGGESTIONS:
    * block--bartik-powered.html.twig
    * block--system-powered-by-block.html.twig
@@ -361,7 +372,7 @@ print render($content);
             <p>Example output:</p>
             <pre><code data-trim class="language-markup">
 &lt;!-- THEME DEBUG --&gt;
-&lt;!-- CALL: theme('block') --&gt;
+&lt;!-- THEME HOOK: 'block' --&gt;
 &lt;!-- FILE NAME SUGGESTIONS:
    * block--system--powered-by.tpl.php
    * block--system.tpl.php
