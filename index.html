@@ -404,29 +404,7 @@ print render($content);
           </section>
 
           <section class="hook-theme">
-            <h2>Define using <code>hook_theme()</code></h2>
-            <pre class="fragment current-show"><code data-trim class="language-php">
-/**
- * Implements hook_theme().
- */
-function sandwich_theme() {
-  return array(
-    'sandwich' => array(
-      'variables' => array(
-        'attributes' => array(),
-        'name' => '',
-        'bread' => '',
-        'cheese' => '',
-        'veggies' => array(),
-        'protein' => '',
-        'condiments' => array(),
-      ),
-      // 'template' is the default in Drupal 8!
-      'template' => 'sandwich',
-    ),
-  );
-}
-</code></pre>
+            <h2><strong>Define</strong> with <code>hook_theme()</code></h2>
             <pre class="fragment"><code data-trim class="language-php">
 /**
  * Implements hook_theme().
@@ -450,7 +428,7 @@ function sandwich_theme() {
           </section>
 
           <section>
-            <h2>Build your render array</h2>
+            <h2><strong>Build</strong> your render array data</h2>
             <pre><code data-trim class="language-php">
 /**
  * Builds a sandwich.
@@ -479,21 +457,21 @@ public function build() {
           </section>
 
           <section>
-            <h2>Markup your Twig template</h2>
+            <h2><strong>Markup</strong> your Twig template</h2>
             <pre><code data-trim class="language-twig">
 &lt;section{{ attributes }}&gt;
   &lt;h2&gt;{{ name }}&lt;/h2&gt;
   {% if bread %}
     &lt;p&gt;&lt;strong&gt;Bread:&lt;/strong&gt; {{ bread }}&lt;/p&gt;
   {% endif %}
-...
-    &lt;strong&gt;Vegetables:&lt;/strong&gt;
-    &lt;ul&gt;
-      {% for veg in veggies %}
-        &lt;li&gt;{{ veg }}&lt;/li&gt;
-      {% endfor %}
-    &lt;/ul&gt;
-  {% endif %}
+
+  &lt;strong&gt;Vegetables:&lt;/strong&gt;
+  &lt;ul&gt;
+    {% for veg in veggies %}
+      &lt;li&gt;{{ veg }}&lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;
+
   {% if condiments %}
     &lt;strong&gt;Condiments:&lt;/strong&gt;
     &lt;ul&gt;
@@ -508,6 +486,7 @@ public function build() {
 
           <section>
             <h2>Voilà!</h2>
+            <p>Themable data</p>
             <img src="images/sandwich.png" alt="Rendered Chickado Sandwich" class="img--bordered img--tall" />
             <aside class="notes">
               <p>That's the bare minimum for most practical use cases. But what if you need to do more, or if you're altering themeable output that someone else has defined? Let's dig a bit deeper.</p>
@@ -564,8 +543,88 @@ public function build() {
               <p>Overall pretty much the same thing, just drupal_render() and theme() got moved to service classes.</p>
             </aside>
           </section>
-        </section>
 
+        </section>
+        <section id="type" class="title-slide">
+
+          <section>
+            <h2><code>#type</code> “Coles Notes”</h2>
+            <p class="fragment">Yes, that's Canadian eh!</p>
+          </section>
+
+          <section>
+            <h2>Defaults and callbacks on a common type of render array</h2>
+            <p>Example output:</p>
+            <pre><code data-trim class="language-php">
+$variables['link'] = [
+  '#type' => 'link',
+  '#title' => t('Example'),
+  '#url' => 'http://example.com',
+];
+</code></pre>
+<div class="fragment">
+<p>Calls <code>#pre_render </code>to build up it's <code>#markup</code> from a <strong>link generator</strong>.</p>
+<pre><code data-trim class="language-php">
+\Drupal::service('link_generator');
+$generated_link = $link_generator->generate($element['#title'], $element['#url']->setOptions($options), TRUE);
+$element['#markup'] = $generated_link->getGeneratedLink();
+</code></pre>
+</div>
+          </section>
+
+          <section>
+            <h2>Discoverable Differences</h2>
+
+           <div>
+             <div class="l-fifty fragment">
+             Drupal 7:
+               <pre><code data-trim class="language-php">
+/**
+ * Implements hook_element_info().
+ */
+function your_module_element_info() {
+  $types['html_tag'] = array(
+    '#theme' => 'html_tag',
+    '#pre_render' => array(
+      'drupal_pre_render_conditional_comments'
+    ),
+    '#attributes' => array(),
+    '#value' => NULL,
+  );
+  return $types;
+}
+</code></pre>
+             </div>
+
+             <div class="l-fifty fragment">
+             Drupal 8:
+               <pre><code data-trim class="language-php">
+/**
+ * Provides a render element for any HTML tag, with properties and value.
+ *
+ * @RenderElement("html_tag")
+ */
+class HtmlTag extends RenderElement {
+  public function getInfo() {
+    return [
+      '#theme' => 'html_tag',
+      '#pre_render' => [
+        [HtmlTag, 'preRenderConditionalComments'],
+      ],
+      '#attributes' => [],
+      '#value' => NULL,
+    ];
+  }
+}
+</code></pre>
+             </div>
+
+            </div>
+
+          </section>
+
+
+        </section>
         <section id="twig-magic" class="title-slide">
           <section>
             <h2>Twig magic</h2>
