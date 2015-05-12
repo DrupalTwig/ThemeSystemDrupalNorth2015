@@ -41,7 +41,7 @@ body {
   color: #657b83; }
 
 ::selection {
-  color: white;
+  color: #fff;
   background: #d33682;
   text-shadow: none; }
 
@@ -235,7 +235,11 @@ i.pittet-logo {
     content: "J";
     font-size: 80px; }
 
-/* Prism Override */
 .token.comment, .token.prolog, .token.doctype, .token.cdata {
-  color: #ccc;
-}
+  color: #ccc; }
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "Panic Sans", "DejaVu Sans Mono", Monaco, "Andale Mono", monospace; }
+
+/*# sourceMappingURL=theme-system.css.map */

@@ -242,3 +242,7 @@ i.pittet-logo {
 .token.comment, .token.prolog, .token.doctype, .token.cdata {
   color: #ccc;
 }
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "Panic Sans", "DejaVu Sans Mono", Monaco, "Andale Mono", monospace;
+}
