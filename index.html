@@ -18,7 +18,18 @@
     <link rel="stylesheet" href="css/theme/theme-system.css" id="theme">
 
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/ir_black.css">
+    <!-- <link rel="stylesheet" href="lib/css/ir_black.css"> -->
+    <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+    <!-- For syntax highlighting -->
+    <!-- <link rel="stylesheet" href="lib/css/monokai_sublime.css" id="highlight-theme"> -->
+    <!-- <link rel="stylesheet" href="lib/css/railscasts.css" id="highlight-theme"> -->
+    <!-- <link rel="stylesheet" href="lib/css/obsidian.css" id="highlight-theme"> -->
+    <!-- <link rel="stylesheet" href="lib/css/hybrid.css" id="highlight-theme"> -->
+    <!-- <link rel="stylesheet" href="lib/css/darkula.css" id="highlight-theme"> -->
+    <!-- <link rel="stylesheet" href="lib/css/ir_black.css" id="highlight-theme"> -->
+    <!-- <link rel="stylesheet" href="lib/css/sunburst.css" id="highlight-theme"> -->
+    <!-- <link rel="stylesheet" href="lib/css/tomorrow-night.css" id="highlight-theme"> -->
+    <link rel="stylesheet" href="lib/css/prism.css">
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
@@ -147,8 +158,7 @@
           <section>
             <h2 class="plus">Theme suggestion hooks</h2>
             <p>Drupal 7:</p>
-            <pre><code data-trim class="php">
-&lt;?php
+            <pre><code data-trim class="language-php">
 /**
  * Implements hook_preprocess_HOOK() for node templates.
  */
@@ -156,11 +166,10 @@ function MYTHEME_preprocess_node(&$variables) {
   $variables['theme_hook_suggestions'][] = 'node__' . 'my_first_suggestion';
   $variables['theme_hook_suggestions'][] = 'node__' . 'my_second_more_specific_suggestion';
 }
-            </code></pre>
+</code></pre>
 
             <p>Drupal 8:</p>
-            <pre><code data-trim class="php">
-&lt;?php
+            <pre><code data-trim class="language-php">
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for node templates.
  */
@@ -168,7 +177,7 @@ function MYTHEME_theme_suggestions_node_alter(array &$suggestions, array $variab
   $suggestions[] = 'node__' . 'my_first_suggestion';
   $suggestions[] = 'node__' . 'my_second_suggestion';
 }
-            </code></pre>
+</code></pre>
             <aside class="notes">
               <p>11:00 - 14:00</p>
               <li>In Drupal 7 you could manipulate theme suggestions during preprocess, but by this point it might already be too late, or you've already done unnecessary preprocessing.</li>
@@ -180,13 +189,13 @@ function MYTHEME_theme_suggestions_node_alter(array &$suggestions, array $variab
           <section>
             <h2>Goodbye theme(), hello <br>render arrays</h2>
             <h4>Drupal 7:</h4>
-            <pre><code class="php">&lt;?php
+            <pre><code class="language-php">
 $variables['list'] = theme('item_list', array(
   'items' => $items,
 ));
 </code></pre>
             <h4>Drupal 8:</h4>
-            <pre><code class="php">&lt;?php
+            <pre><code class="language-php">
 $variables['list'] = [
   '#theme' => 'item_list',
   '#items' => $items,
@@ -203,18 +212,18 @@ $variables['list'] = [
 
             <div>
               All the attributes:
-              <pre><code>&lt;div{{ attributes }}&gt;</code></pre>
+              <pre><code class="language-twig">&lt;div{{ attributes }}&gt;</code></pre>
             </div>
 
             <div class="fragment">
               Please don't do this, you will end up with yucky whitespace:
-              <pre class="fragment current-show"><code>&lt;div {{ attributes }}&gt;</code></pre>
-              <pre class="fragment"><code>&lt;div✖{{ attributes }}&gt;</code></pre>
+              <pre class="fragment current-show"><code class="language-twig">&lt;div {{ attributes }}&gt;</code></pre>
+              <pre class="fragment" class="language-twig"><code class="language-twig">&lt;div✖{{ attributes }}&gt;</code></pre>
             </div>
 
             <div class="fragment">
               Splitting out the class attribute:
-              <pre><code>&lt;div class="myclass {{ attributes.class }}"{{ attributes|without('class') }}&gt;</code></pre>
+              <pre><code class="language-twig">&lt;div class="myclass {{ attributes.class }}"{{ attributes|without('class') }}&gt;</code></pre>
             </div>
             <aside class="notes">
               <p>16:00 - 19:00</p>
@@ -227,12 +236,12 @@ $variables['list'] = [
 
             <div>
               Class manipulation:
-              <pre><code>&lt;div{{ attributes.addClass('hello').removeClass('goodbye') }}&gt;</code></pre>
+              <pre><code class="language-twig">&lt;div{{ attributes.addClass('hello').removeClass('goodbye') }}&gt;</code></pre>
             </div>
 
             <div class="fragment">
               Testing:
-              <pre><code>{% if attributes.hasClass('field-label-inline') %}
+              <pre><code class="language-twig">{% if attributes.hasClass('field-label-inline') %}
   {# Do something special here. #}
 {% endif %}</code></pre>
             </div>
@@ -246,12 +255,12 @@ $variables['list'] = [
 
             <div>
               Set attribute:
-              <pre><code>&lt;div{{ attributes.setAttribute('id', 'eye-d') }}&gt;</code></pre>
+              <pre><code class="language-twig">&lt;div{{ attributes.setAttribute('id', 'eye-d') }}&gt;</code></pre>
             </div>
 
             <div>
               Remove attribute:
-              <pre><code>&lt;div{{ attributes.removeAttribute('id') }}&gt;</code></pre>
+              <pre><code class="language-twig">&lt;div{{ attributes.removeAttribute('id') }}&gt;</code></pre>
             </div>
             <aside class="notes">
               <p>21:00 - 21:30</p>
@@ -264,7 +273,7 @@ $variables['list'] = [
             <div>
               <div class="fragment l-fifty">
                 <h4>Drupal 7:</h4>
-                <pre><code class="php">&lt;?php
+                <pre><code class="language-php">
 // We hide the comments and links
 // to print them later.
 hide($content['comments']);
@@ -277,12 +286,12 @@ show($content['links']);
 // Prints content with links yet
 // without comments :(
 print render($content);
-?&gt;</code></pre>
+</code></pre>
               </div>
 
               <div class="fragment l-fifty">
                 <h4>Drupal 8:</h4>
-                <pre><code>{# Print without comments and links #}
+                <pre><code class="language-twig">{# Print without comments and links #}
 {{ content|without('comments', 'links') }}
 
 {# Print only links #}
@@ -302,7 +311,7 @@ print render($content);
             </aside>
           </section>
 
-          <section class="twig">
+          <section class="language-twig">
             <h2 class="plus">Oh yeah, and Twig!</h2>
             <aside class="notes">
               <p>23:00 - 25:00</p>
@@ -318,11 +327,11 @@ print render($content);
         <section>
           <section>
             <p>services.yml:</p>
-            <pre><code>parameters:
+            <pre><code class="language-yaml">parameters:
   twig.config:
     debug: true</code></pre>
             <p>Example output:</p>
-            <pre><code data-trim class="html">
+            <pre><code data-trim class="language-markup">
 &lt;!-- THEME DEBUG --&gt;
 &lt;!-- CALL: _theme('block') --&gt;
 &lt;!-- FILE NAME SUGGESTIONS:
@@ -339,7 +348,7 @@ print render($content);
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;!-- END OUTPUT from 'core/modules/block/templates/block.html.twig' --&gt;
-            </code></pre>
+</code></pre>
             <aside class="notes">
               <p>25:00 - 27:00</p>
             </aside>
@@ -348,9 +357,9 @@ print render($content);
           <section>
             <h2>Drupal 7.33+</h2>
             <p>settings.php:</p>
-            <pre><code>$conf['theme_debug'] = TRUE;</code></pre>
+            <pre><code class="language-php">$conf['theme_debug'] = TRUE;</code></pre>
             <p>Example output:</p>
-            <pre><code data-trim class="html">
+            <pre><code data-trim class="language-markup">
 &lt;!-- THEME DEBUG --&gt;
 &lt;!-- CALL: theme('block') --&gt;
 &lt;!-- FILE NAME SUGGESTIONS:
@@ -366,7 +375,7 @@ print render($content);
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;!-- END OUTPUT from 'modules/block/block.tpl.php' --&gt;
-            </code></pre>
+</code></pre>
             <aside class="notes">
               <p>27:00 - 28:00</p>
             </aside>
@@ -385,8 +394,7 @@ print render($content);
 
           <section class="hook-theme">
             <h2>Define using <code>hook_theme()</code></h2>
-            <pre class="fragment current-show"><code data-trim class="php">
-&lt;?php
+            <pre class="fragment current-show"><code data-trim class="language-php">
 /**
  * Implements hook_theme().
  */
@@ -407,9 +415,8 @@ function sandwich_theme() {
     ),
   );
 }
-            </code></pre>
-            <pre class="fragment"><code data-trim class="php">
-&lt;?php
+</code></pre>
+            <pre class="fragment"><code data-trim class="language-php">
 /**
  * Implements hook_theme().
  */
@@ -428,13 +435,12 @@ function sandwich_theme() {
     ],
   ];
 }
-            </code></pre>
+</code></pre>
           </section>
 
           <section>
             <h2>Build your render array</h2>
-            <pre><code data-trim class="php">
-&lt;?php
+            <pre><code data-trim class="language-php">
 /**
  * Builds a sandwich.
  */
@@ -454,7 +460,7 @@ public function build() {
     '#condiments' => [$this->t('Mayo'), $this->t('Dijon')],
   ];
 }
-            </code></pre>
+</code></pre>
             <p>Pass in variables using #-prefixed keys.</p>
             <aside class="notes">
               <p>- 31:00</p>
@@ -463,22 +469,13 @@ public function build() {
 
           <section>
             <h2>Markup your Twig template</h2>
-            <pre><code data-trim>
+            <pre><code data-trim class="language-twig">
 &lt;section{{ attributes }}&gt;
   &lt;h2&gt;{{ name }}&lt;/h2&gt;
   {% if bread %}
     &lt;p&gt;&lt;strong&gt;Bread:&lt;/strong&gt; {{ bread }}&lt;/p&gt;
   {% endif %}
-
-  {% if protein %}
-    &lt;p&gt;&lt;strong&gt;Protein:&lt;/strong&gt; {{ protein }}&lt;/p&gt;
-  {% endif %}
-
-  {% if cheese %}
-    &lt;p&gt;&lt;strong&gt;Cheese:&lt;/strong&gt; {{ cheese }}&lt;/p&gt;
-  {% endif %}
-
-  {% if veggies %}
+...
     &lt;strong&gt;Vegetables:&lt;/strong&gt;
     &lt;ul&gt;
       {% for veg in veggies %}
@@ -486,7 +483,6 @@ public function build() {
       {% endfor %}
     &lt;/ul&gt;
   {% endif %}
-
   {% if condiments %}
     &lt;strong&gt;Condiments:&lt;/strong&gt;
     &lt;ul&gt;
@@ -496,7 +492,7 @@ public function build() {
     &lt;/ul&gt;
   {% endif %}
 &lt;/section&gt;
-            </code></pre>
+</code></pre>
           </section>
 
           <section>
@@ -513,17 +509,17 @@ public function build() {
           <section>
             <h2>Overview of Drupal 7<br> rendering flow</h2>
             <ol>
-              <li><code>drupal_render()</code>
+              <li><code class="language-markup">drupal_render()</code>
                 <ol start="2">
-                  <li><code>#pre_render</code></li>
+                  <li><code class="language-markup">#pre_render</code></li>
                   <li>
-                    <code>theme()</code>
+                    <code class="language-markup">theme()</code>
                     <ol start="4">
                       <li>Preprocess functions (and suggestions)</li>
                       <li>Template/theme function is rendered</li>
                     </ol>
                   </li>
-                  <li value="7"><code>#post_render</code></li>
+                  <li value="7"><code class="language-markup">#post_render</code></li>
                 </ol>
               </li>
             </ol>
@@ -539,16 +535,16 @@ public function build() {
             <ol>
               <li><code>\Drupal::service('renderer')->render()</code>
                 <ol start="2">
-                  <li><code>#pre_render</code></li>
+                  <li><code class="language-markup">#pre_render</code></li>
                   <li>
-                    <code>\Drupal::theme()->render()</code>
+                    <code class="language-markup">\Drupal::theme()->render()</code>
                     <ol start="4">
                       <li>Theme suggestion hooks</li>
                       <li>Preprocess functions</li>
                       <li>Template is rendered</li>
                     </ol>
                   </li>
-                  <li value="7"><code>#post_render</code></li>
+                  <li value="7"><code class="language-markup">#post_render</code></li>
                 </ol>
               </li>
             </ol>
@@ -562,8 +558,8 @@ public function build() {
         <section id="twig-magic" class="title-slide">
           <section>
             <h2>Twig magic</h2>
-            <p><code>{{ sandwich.cheese }}</code></p>
-<pre><code data-trim class="php">
+            <p><code class="language-twig">{{ sandwich.cheese }}</code></p>
+<pre><code data-trim class="language-php">
 // Array key.
 $sandwich['cheese'];
 // Object property.
@@ -598,29 +594,21 @@ $sandwich->__call('cheese');
         <section id="autoescape" class="title-slide">
           <h2>Autoescape</h2>
           <div class="fragment">
-            <pre><code data-trim class="php">
-              &lt;?php $user->field_first_name = "&lt;script&gt;alert('XSS')&lt;/script&gt;";
-            </code></pre>
+            <pre><code data-trim class="language-php">
+              $user->field_first_name = "&lt;script&gt;alert('XSS')&lt;/script&gt;";
+</code></pre>
           </div>
 
           <div>
-            <div class="fragment highlight-red">
+            <div class="fragment">
               <h4>Drupal 7:</h4>
-              <pre><code data-trim class="php">
-                <span>BAD &lt;?php print $user->field_first_name; ?&gt;!</span>
-              </code></pre>
-              <pre><code data-trim class="twig">
-                <span>GOOD &lt;?php print check_plain($user->field_first_name); ?&gt;!</span>
-              </code></pre>
+              <pre><code data-trim class="language-php">BAD <span>  &lt;?php print $user->field_first_name; ?&gt;</span></code></pre>
+              <pre><code data-trim class="language-php">GOOD <span> &lt;?php print check_plain($user->field_first_name); ?&gt;</span></code></pre>
             </div>
-            <div class="fragment highlight-green">
+            <div class="fragment">
               <h4>Drupal 8:</h4>
-              <pre><code data-trim class="html">
-                <span>GOOD {{ user.field_first_name }}!</span>
-              </code></pre>
-              <pre><code data-trim class="html">
-                <span>BAD {{ user.field_first_name|raw }}!</span>
-              </code></pre>
+              <pre><code data-trim class="language-twig">GOOD <span>{{ user.field_first_name }}!</span></code></pre>
+              <pre><code data-trim class="language-twig">BAD <span> {{ user.field_first_name|raw }}!</span></code></pre>
             </div>
           </div>
 
@@ -676,6 +664,7 @@ $sandwich->__call('cheese');
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.min.js"></script>
 
+    <script src="lib/js/prism.js" data-default-language="markup"></script>
     <script>
 
       // Full list of configuration options available here:
@@ -698,7 +687,7 @@ $sandwich->__call('cheese');
           { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          // { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
           { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
