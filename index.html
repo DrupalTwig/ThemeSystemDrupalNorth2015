@@ -239,6 +239,23 @@ $variables['list'] = array(
 					</section>
 
 					<section>
+						<h2>Attributes cont'd</h2>
+
+						<div>
+							Set attribute:
+							<pre><code>&lt;div{{ attributes.setAttribute('id', 'eye-d') }}&gt;</code></pre>
+						</div>
+
+						<div>
+							Remove attribute:
+							<pre><code>&lt;div{{ attributes.removeAttribute('id') }}&gt;</code></pre>
+						</div>
+						<aside class="notes">
+							<p>21:00 - 21:30</p>
+						</aside>
+					</section>
+
+					<section>
 						<h2>Print what you want,<br> when you want</h2>
 						<h4>Drupal 7:</h4>
 						<pre><code class="php">&lt;?php
@@ -252,7 +269,7 @@ print render($content);
 							<pre><code>{# We give you what you ask for. #}
 {{ content|without('comments', 'links') }}</code></pre>
 						<aside class="notes">
-							<p>21:00 - 23:00</p>
+							<p>21:30 - 23:00</p>
 						</aside>
 					</section>
 
