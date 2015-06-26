@@ -248,3 +248,6 @@ code[class*="language-"],
 pre[class*="language-"] {
   font-family: "Panic Sans", "DejaVu Sans Mono", Monaco, "Andale Mono", monospace;
 }
+.token.property, .token.tag, .token.constant, .token.symbol, .token.deleted {
+  color: goldenrod;
+}

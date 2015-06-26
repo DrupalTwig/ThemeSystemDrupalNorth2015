@@ -202,9 +202,9 @@ section.twig {
 
 section.hook-theme {
   min-height: 500px; }
+
 .reveal pre code {
   padding: 0; }
-
 .reveal .slides section .fragment.current-show {
   display: none;
   visibility: hidden; }
@@ -243,5 +243,8 @@ i.pittet-logo {
 code[class*="language-"],
 pre[class*="language-"] {
   font-family: "Panic Sans", "DejaVu Sans Mono", Monaco, "Andale Mono", monospace; }
+
+.token.property, .token.tag, .token.constant, .token.symbol, .token.deleted {
+  color: goldenrod; }
 
 /*# sourceMappingURL=theme-system.css.map */
